@@ -19,10 +19,10 @@ This is a Simulator of Lego Blocks created for the COMP-465 course at CSUN.
 - [ ] Movement of legos throughout the X,Z plane
 - [ ] Clear bottom _n_ levels of plate to make room for more legos (future implementation)
 ### Camera Movement
-- [ ] Camera rotation around the plane
-  - [ ] Camera will rotate and always look at center of plane
-  - [ ] Camera will be allowed to move up/down/left/right
-  - [ ] Zoom In/Out functionality
+- [x] Camera rotation around the plane
+  - [x] Camera will rotate and always look at center of plane
+  - [x] Camera will be allowed to move up/down/left/right
+  - [x] Zoom In/Out functionality
 ### UI 
 - [ ] Implement GUI that will allow user to play, set plate size, or quit
 
