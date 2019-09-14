@@ -25,13 +25,16 @@ public class GameMaster : MonoBehaviour
 
     static bool platformPhysics;
 
+    //Camera main_camera;
+
     // Start is called before the first frame update
     void Start()
     {
+        //main_camera = Camera.main;
         // instantiate a plate of legos
         for (int i = 0; i < platform_size; i++)
         {
-            for(int j = 0; j < platform_size; j++)
+            for (int j = 0; j < platform_size; j++)
             {
                 // multiply by size of legos to make up for displacement so they hug each other
                 x = i * 0.08f + (startX + 0.04f);
@@ -49,7 +52,7 @@ public class GameMaster : MonoBehaviour
     void Update()
     {
         //#region Generate a block based on the reset time
-        if(reset_time < Time.time)
+        if (reset_time < Time.time)
         {
             // randomize and place game objects
             x = (Random.Range(0, platform_size) * 0.08f) + (startX + 0.04f);
@@ -61,7 +64,7 @@ public class GameMaster : MonoBehaviour
                 r.material = m;
 
             //if (physicsOnOff)
-                gObj.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ; ;
+            gObj.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
 
             // Destroy the objects spawning after a specific amount of time
             Destroy(gObj, delta_time + 15);
@@ -69,6 +72,14 @@ public class GameMaster : MonoBehaviour
         }
         //#endregion
     }
+
+    //void RotateCamera()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.A))
+    //    {
+    //        main_camera.transform.SetPositionAndRotation(Vector3.left, Quaternion.identity);
+    //    }
+    //}
 }
 
 // If D is pressed turn iskinematics on to essentially break the platform.
