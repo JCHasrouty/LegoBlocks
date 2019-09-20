@@ -30,7 +30,7 @@ This is a Simulator of Lego Blocks created for the COMP-465 course at CSUN.
 * Stay tuned for further updates. Game development is still in progress. 
 
 # Authors
-Jean Claude Hasrouty
+[Jean Claude Hasrouty](https://www.linkedin.com/in/jean-claude-hasrouty/)
 
 <!-- Markdown link & img dfn's -->
 [npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
