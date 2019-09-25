@@ -380,10 +380,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192eb21e60b3b4d8da81df2d9b77e1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  legoPlateUnitPref: {fileID: 2976032721880930058, guid: b99b1251eca5443ff91468f81ba4f027,
+  legoPlateUnitPref: {fileID: 4461383084701471469, guid: 4b1acd86209544b8db874c4f600440d6,
     type: 3}
   legoBlockUnitPref:
-  - {fileID: 4584626461558406010, guid: 34d057f2672fb427ab8c9c1bc27b1614, type: 3}
+  - {fileID: 2627604078291969152, guid: 94d3daef1aef846a58a52c6c5f018f05, type: 3}
   blockMaterials:
   - {fileID: 2100000, guid: d5b17d25172c2406a9afe4ee9943d56a, type: 2}
   - {fileID: 2100000, guid: b2c8a5cb393334f8a903a8f7947b4320, type: 2}

@@ -71,7 +71,7 @@ public class GameMaster : MonoBehaviour
             z = (UnityEngine.Random.Range(0, platform_size) * 0.08f) + (startZ + 0.04f);
             // Spawning game object from UniyPref array, choosing x,y,z coordinates and setting rotation
             // Edit Random.Range(50,1000) to alter Y coordinate to spawn higher
-            var gObj = GameObject.Instantiate(legoBlockUnitPref[UnityEngine.Random.Range(0, 2)], new Vector3(x, UnityEngine.Random.Range(1, 3), z), Quaternion.identity);
+            var gObj = GameObject.Instantiate(legoBlockUnitPref[UnityEngine.Random.Range(0, 6)], new Vector3(x, UnityEngine.Random.Range(1, 3), z), Quaternion.identity);
             // command not working
             gObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
             gObj.GetComponent<Rigidbody>().isKinematic = false;
