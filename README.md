@@ -13,7 +13,7 @@ This is a Simulator of Lego Blocks created for the COMP-465 course at CSUN.
   - [x] Spawn with random rotation
   - [x] Spawn with random color
 - [x] Placing lego blocks on the platform
-- [ ] Model/Implement various lego blocks of various sizes
+- [x] Model/Implement various lego blocks of various sizes
 - [ ] Boundaries/Volume to limit legos to be placed within the plate that is spawned
 - [ ] Ability to rotate legos
 - [ ] Movement of legos throughout the X,Z plane
@@ -24,7 +24,7 @@ This is a Simulator of Lego Blocks created for the COMP-465 course at CSUN.
   - [x] Camera will be allowed to move up/down/left/right
   - [x] Zoom In/Out functionality
 ### UI 
-- [ ] Implement GUI that will allow user to play, set plate size, or quit
+- [x] Implement GUI that will allow user to play, set plate size, or quit
 
 # Notes
 * Stay tuned for further updates. Game development is still in progress. 
