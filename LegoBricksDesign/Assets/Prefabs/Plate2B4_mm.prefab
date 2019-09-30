@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8077591066543959907}
   - component: {fileID: 1072461305182480822}
   - component: {fileID: 4759802252807517671}
+  - component: {fileID: 114253969921445778}
   m_Layer: 0
   m_Name: Plate2B4_mm
   m_TagString: Untagged
@@ -108,3 +109,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114253969921445778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077591066541961635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 326c6a033df7043c488f44e675ecd608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

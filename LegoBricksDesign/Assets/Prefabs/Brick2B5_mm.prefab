@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 62496786981957756}
   - component: {fileID: 65308533529951488}
   - component: {fileID: 54087681876501828}
+  - component: {fileID: 114812305021175724}
   m_Layer: 0
   m_Name: Brick2B5_mm
   m_TagString: Untagged
@@ -108,3 +109,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114812305021175724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62496786979958460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 326c6a033df7043c488f44e675ecd608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

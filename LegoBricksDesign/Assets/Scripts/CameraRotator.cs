@@ -24,9 +24,9 @@ public class CameraRotator : MonoBehaviour
     private void ZoomCamera()
     {
         float zoomChangeAmount = 40f;
-        if (Input.mouseScrollDelta.y > 0)
+        if (Input.GetKey(KeyCode.Z))
             Camera.main.fieldOfView -= zoomChangeAmount * Time.deltaTime;
-        if (Input.mouseScrollDelta.y < 0)
+        if (Input.GetKey(KeyCode.X))
             Camera.main.fieldOfView += zoomChangeAmount * Time.deltaTime;
     }
     private void MoveCamera()
