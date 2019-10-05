@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 8822809387810163332}
   - component: {fileID: 5756886686539678678}
   - component: {fileID: 114949791004100376}
+  - component: {fileID: 114722071804759102}
   m_Layer: 0
   m_Name: Plate2B5_mm
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2627604078291969152}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
@@ -121,3 +122,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326c6a033df7043c488f44e675ecd608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114722071804759102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2627604078291969152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0444fd9ab18c4bc59d3a44292163756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 1
+  Size: 5

@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 7141938756532797200}
   - component: {fileID: 3737003363565892186}
   - component: {fileID: 114982194562099254}
+  - component: {fileID: 114167265358145174}
   m_Layer: 0
   m_Name: Plate1B3_mm
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,3 +122,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326c6a033df7043c488f44e675ecd608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114167265358145174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415869800908033299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0444fd9ab18c4bc59d3a44292163756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
+  Size: 3

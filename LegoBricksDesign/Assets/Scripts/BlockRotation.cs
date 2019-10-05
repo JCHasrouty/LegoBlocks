@@ -47,6 +47,7 @@ public class BlockRotation : MonoBehaviour
             transform.Translate(Vector3.back * blockMoveSpeed * Time.deltaTime);
         else if (Input.GetKeyDown(KeyCode.D) && isMoving)
             transform.Translate(Vector3.right * blockMoveSpeed * Time.deltaTime);
+
     }
 
     private bool CheckMovement()

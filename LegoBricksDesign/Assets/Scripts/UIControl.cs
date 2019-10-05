@@ -13,6 +13,10 @@ public class UIControl : MonoBehaviour
 
     public InputField inpXDim;
     public InputField inpYDim;
+    
+    public Toggle togglePhysics;
+    string LegoBlockSpeed = "";
+    string LegoGameMode = "";
 
     public void butStartClicked()
     {
@@ -29,11 +33,34 @@ public class UIControl : MonoBehaviour
         // no error checking but take it into consideration
         int x = Convert.ToInt32(inpXDim.text);
         int y = Convert.ToInt32(inpYDim.text);
+        bool physicsStatus = Convert.ToBoolean(togglePhysics.isOn);
 
         PlayerPrefs.SetString("X", x.ToString());
         PlayerPrefs.SetString("Y", y.ToString());
+        PlayerPrefs.SetString("TogglePhysics", physicsStatus.ToString());
 
         Debug.Log(string.Format("The new dimension of board will be {0}x{1}", x, y));
+    }
+    public void SlowButtonClicked()
+    { 
+        LegoBlockSpeed = "slow";
+        PlayerPrefs.SetString("BlockSpeed", LegoBlockSpeed);
 
     }
+    public void FastButtonClicked()
+    {
+        LegoBlockSpeed = "fast";
+        PlayerPrefs.SetString("BlockSpeed", LegoBlockSpeed);
+    }
+    public void UniformButtonClicked()
+    {
+        LegoGameMode = "uniform";
+        PlayerPrefs.SetString("GameMode", LegoGameMode);
+    }
+    public void BreakAwayButtonClicked()
+    {
+        LegoGameMode = "break-away";
+        PlayerPrefs.SetString("GameMode", LegoGameMode);
+    }
+
 }
