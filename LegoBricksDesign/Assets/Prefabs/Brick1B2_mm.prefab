@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 65384432011593802}
   - component: {fileID: 114908378923275696}
   - component: {fileID: 114770850581838088}
+  - component: {fileID: 114024145569171524}
   m_Layer: 0
   m_Name: Brick1B2_mm
   m_TagString: Block
@@ -136,3 +137,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   Size: 2
+--- !u!114 &114024145569171524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959652148967491604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828ca8da9922c4c3bbc8584c431cbce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowMovement: 0
