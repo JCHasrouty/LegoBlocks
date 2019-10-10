@@ -9,31 +9,19 @@ public class BlockRotation : MonoBehaviour
     private float z_rot = 0;
     float speed;
     float blockMoveSpeed = 10;
-    //private float horizontal_axis;
-    //private float vertical_axis;
-    //Vector3 boundary_wall_1;
-    //Vector3 boundary_wall_2;
-    //Vector3 boundary_wall_3;
-    //Vector3 boundary_wall_4;
-    //Vector3 current_position;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        /*boundary_wall_1 = new Vector3((float)1.06, 0, 0);
-        boundary_wall_2 = new Vector3((float)-1.06, 0, 0);
-        boundary_wall_3 = new Vector3(0, 0, (float)1.06);
-        boundary_wall_4 = new Vector3(0, 0, (float)-1.06);*/
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //horizontal_axis = Input.GetAxis("Horizontal");
-        //vertical_axis = Input.GetAxis("Vertical");
-        //current_position = transform.position;
         var isMoving = CheckMovement();
-        // check if key pressed and if block is not on the plate ye
+        // check if key pressed and if block is not on the plate yet
         if (Input.GetKeyDown(KeyCode.R) && isMoving)
             transform.Rotate(x_rot, y_rot + 90, z_rot);
 
