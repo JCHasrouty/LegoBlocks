@@ -41,12 +41,49 @@ public class GameMaster : MonoBehaviour
     {
         //canSpawnBlock = true;
         // instantiate a plate of legos
-        if (PlayerPrefs.HasKey("X") && PlayerPrefs.HasKey("Y"))
+        if(PlayerPrefs.HasKey("X") && PlayerPrefs.HasKey("Y"))
         {
+            Debug.Log("PlayerPrefs running");
             //PlatformSize = Convert.ToInt32(PlayerPrefs.GetString("X"));
             PlatformSizeX = Convert.ToInt32(PlayerPrefs.GetString("X"));
             PlatformSizeY = Convert.ToInt32(PlayerPrefs.GetString("Y"));
 
+            for (int i = 0; i < PlatformSizeX; i++)
+            {
+                for (int j = 0; j < PlatformSizeY; j++)
+                {
+                    x = (i * 0.08f) + (startX + 0.04f);
+                    z = (j * 0.08f) + (startZ + 0.04f);
+                    // set location of plate legos and instantiate them
+                    var gObj = GameObject.Instantiate(legoPlateUnitPref, new Vector3(x, 0, z), Quaternion.identity);
+                    //gObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+                    gObj.GetComponentInChildren<Rigidbody>().isKinematic = true;
+
+                    //Rigidbody gObj1 = gObj.GetComponent<Rigidbody>();
+                }
+            }
+
+        }
+        // Default values
+        else
+        {
+            Debug.Log("Default plate constructor running");
+            PlatformSizeX = 25;
+            PlatformSizeY = 25;
+            for (int i = 0; i < PlatformSizeX; i++)
+            {
+                for (int j = 0; j < PlatformSizeY; j++)
+                {
+                    x = (i * 0.08f) + (startX + 0.04f);
+                    z = (j * 0.08f) + (startZ + 0.04f);
+                    // set location of plate legos and instantiate them
+                    var gObj = GameObject.Instantiate(legoPlateUnitPref, new Vector3(x, 0, z), Quaternion.identity);
+                    //gObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+                    gObj.GetComponentInChildren<Rigidbody>().isKinematic = true;
+
+                    //Rigidbody gObj1 = gObj.GetComponent<Rigidbody>();
+                }
+            }
         }
 
         if (PlayerPrefs.HasKey("BlockSpeed"))
@@ -54,20 +91,11 @@ public class GameMaster : MonoBehaviour
         if (PlayerPrefs.HasKey("GameMode"))
             _gameMode = PlayerPrefs.GetString("GameMode");
 
-        for (int i = 0; i < PlatformSizeX; i++)
-        {
-            for (int j = 0; j < PlatformSizeY; j++)
-            {
-                x = (i * 0.08f) + (startX + 0.04f);
-                z = (j * 0.08f) + (startZ + 0.04f);
-                // set location of plate legos and instantiate them
-                var gObj = GameObject.Instantiate(legoPlateUnitPref, new Vector3(x, 0, z), Quaternion.identity);
-                //gObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
-                gObj.GetComponentInChildren<Rigidbody>().isKinematic = true;
-
-                //Rigidbody gObj1 = gObj.GetComponent<Rigidbody>();
-            }
-        }
+        Debug.Log("Block speed is: " + _blockSpeed);
+        Debug.Log("Game mode is: " + _gameMode);
+        //PlatformSizeX = 25;
+        //PlatformSizeY = 25;
+        //Debug.Log("Reset plate values");
     }
 
     // Update is called once per frame

@@ -15,12 +15,16 @@ public class UIControl : MySingleton<UIControl>
     public RawImage backgroundImage;
     //public Button mButton;
 
+     
+    // Input Field Variables //
     public InputField inpXDim;
     public InputField inpYDim;
+    int DefaultX = 25;
+    int DefaultY = 25;
     //public Button MButton;
 
-    
-    
+
+
     //public Toggle togglePhysics;
     string LegoBlockSpeed = "";
     string LegoGameMode = "";
@@ -28,13 +32,18 @@ public class UIControl : MySingleton<UIControl>
     public void OnEnable()
     {
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+
+        // Set default plate values in case user does not specify
+        PlayerPrefs.SetString("X", DefaultX.ToString());
+        PlayerPrefs.SetString("Y", DefaultY.ToString());
+
     }
     public void OnDisable()
     {
         SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
     }
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
-    {
+    { 
         switch (arg0.name)
         {
             case "MainMenu":

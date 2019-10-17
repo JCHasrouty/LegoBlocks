@@ -8,29 +8,54 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     public RectTransform panelSimulationPauseMenu;
-    public static bool GameIsPaused = true;
+    //public static bool GameIsPaused = true;
+    public bool GameIsPaused;
     public Button resumeButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        Button resButton = resumeButton.GetComponent<Button>();
-        resButton.onClick.AddListener(PauseGame);
+        GameIsPaused = false;    
     }
-
-    void PauseGame()
+    void Update()
     {
-        if(GameIsPaused)
+        Button resButton = resumeButton.GetComponent<Button>();
+        if (!GameIsPaused)
         {
-            Time.timeScale = 0f;
-            GameIsPaused = false;
+            resButton.onClick.AddListener(PauseGame);
         }
         else
         {
-            GameIsPaused = true;
-            Time.timeScale = 1f;
-            panelSimulationPauseMenu.transform.gameObject.SetActive(false);
+            resButton.onClick.AddListener(UnPause);
         }
+    }
+
+    //void PauseGame()
+    //{
+    //    if(GameIsPaused)
+    //    {
+    //        Time.timeScale = 0f;
+    //        GameIsPaused = false;
+    //    }
+    //    else
+    //    {
+    //        GameIsPaused = true;
+    //        Time.timeScale = 1f;
+    //        panelSimulationPauseMenu.transform.gameObject.SetActive(false);
+    //    }
+    //}
+
+    void PauseGame()
+    {
+        GameIsPaused = true;
+        Time.timeScale = 0f;
+        panelSimulationPauseMenu.transform.gameObject.SetActive(true);
+    }
+    void UnPause()
+    {
+        GameIsPaused = false;
+        Time.timeScale = 1f;
+        panelSimulationPauseMenu.transform.gameObject.SetActive(false);
     }
 
     
