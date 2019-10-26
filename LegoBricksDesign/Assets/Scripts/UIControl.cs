@@ -7,12 +7,21 @@ using UnityEngine.UI;
 
 public class UIControl : MySingleton<UIControl>
 {
+
+    public delegate void BlockSelectedClicked(int id);
+    public static event BlockSelectedClicked OnBlockSelectedClicked;
+
+    public delegate void ColorSelectedClicked(string colorHex);
+    public static event ColorSelectedClicked OnColorSelectedClicked;
+
     //// only way to reference the panel
     public RectTransform panelMainMenu;
     public RectTransform panelSetting;
     public RectTransform panelSimulationMainMenu;
     public RectTransform panelSimulationPauseMenu;
     public RawImage backgroundImage;
+    public RectTransform panelBuildMenu;
+    public RectTransform panelBuildColors;
     //public Button mButton;
 
      
@@ -23,7 +32,7 @@ public class UIControl : MySingleton<UIControl>
     int DefaultY = 25;
     //public Button MButton;
 
-
+    public bool BuildMode = false;
 
     //public Toggle togglePhysics;
     string LegoBlockSpeed = "";
@@ -49,17 +58,20 @@ public class UIControl : MySingleton<UIControl>
             case "MainMenu":
                 panelMainMenu.transform.gameObject.SetActive(true);
                 panelSetting.transform.gameObject.SetActive(false);
-                panelSimulationMainMenu.transform.gameObject.SetActive(false);
-                panelSimulationPauseMenu.transform.gameObject.SetActive(false);
-
+                panelBuildMenu.transform.gameObject.SetActive(false);
+                panelBuildColors.transform.gameObject.SetActive(false);
                 break;
             case "MainLevel":
                 panelMainMenu.transform.gameObject.SetActive(false);
                 panelSetting.transform.gameObject.SetActive(false);
-                panelSimulationMainMenu.transform.gameObject.SetActive(false);
-                panelSimulationPauseMenu.transform.gameObject.SetActive(false);
                 backgroundImage.transform.gameObject.SetActive(false);
-
+                break;
+            case "BuildingBlockLevel":
+                panelMainMenu.transform.gameObject.SetActive(false);
+                panelSetting.transform.gameObject.SetActive(false);
+                backgroundImage.transform.gameObject.SetActive(false);
+                panelBuildMenu.transform.gameObject.SetActive(true);
+                panelBuildColors.transform.gameObject.SetActive(true);
                 break;
             default:
                 // do something else
@@ -71,6 +83,17 @@ public class UIControl : MySingleton<UIControl>
     {
         SceneManager.LoadScene("MainLevel");
         Debug.Log("Button start clicked");
+    }
+    public void BuildModeClicked()
+    {
+        BuildMode = true;
+        SceneManager.LoadScene("BuildingBlockLevel");
+    }
+    public void ResetButtonClicked()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainLevel");
+        Debug.Log("Reset button clicked");
     }
     public void butExitClicked()
     {
@@ -112,4 +135,20 @@ public class UIControl : MySingleton<UIControl>
         PlayerPrefs.SetString("GameMode", LegoGameMode);
     }
 
+
+    // input variable can be any of the primitive data types: int, var, bool, string, float, etc
+    // Associate that value with the Block Data. Can act as an index of an array that stores your prefab.
+    // So create prefab array and when that button is pressed, spawn that specific block.
+    // So -> gameObject prefab_array[value] will initialize 1 for example
+    // create a variable that holds value selected and sends it to game master which then selects that block and instantiates it
+    public void ButtonBlockSelector(int value)
+    {
+        if (OnBlockSelectedClicked != null)
+            OnBlockSelectedClicked(value);
+    }
+    public void ButtonColorSelected(string value)
+    {
+        if (OnColorSelectedClicked != null)
+            OnColorSelectedClicked(value);
+    }
 }

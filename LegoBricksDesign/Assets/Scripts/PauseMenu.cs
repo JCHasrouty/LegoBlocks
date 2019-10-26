@@ -7,10 +7,13 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public RectTransform panelSimulationPauseMenu;
+    //public RectTransform panelSimulationPauseMenu;
+    public RectTransform MainMenu;
     //public static bool GameIsPaused = true;
     public bool GameIsPaused;
     public Button resumeButton;
+    public Button resetButton;
+    public Button playButton;
 
     // Start is called before the first frame update
     void Start()
@@ -30,32 +33,21 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    //void PauseGame()
-    //{
-    //    if(GameIsPaused)
-    //    {
-    //        Time.timeScale = 0f;
-    //        GameIsPaused = false;
-    //    }
-    //    else
-    //    {
-    //        GameIsPaused = true;
-    //        Time.timeScale = 1f;
-    //        panelSimulationPauseMenu.transform.gameObject.SetActive(false);
-    //    }
-    //}
-
     void PauseGame()
     {
+        Button resetButtonRef = resetButton.GetComponent<Button>();
+        Button playButtonRef = playButton.GetComponent<Button>();
         GameIsPaused = true;
         Time.timeScale = 0f;
-        panelSimulationPauseMenu.transform.gameObject.SetActive(true);
+        MainMenu.transform.gameObject.SetActive(true);
+        resetButtonRef.transform.gameObject.SetActive(true);
+        playButtonRef.transform.gameObject.SetActive(false);
     }
     void UnPause()
     {
         GameIsPaused = false;
         Time.timeScale = 1f;
-        panelSimulationPauseMenu.transform.gameObject.SetActive(false);
+        MainMenu.transform.gameObject.SetActive(false);
     }
 
     

@@ -28,13 +28,62 @@ public class BlockRotation : MonoBehaviour
 
         // Block movement in Z axis
         if (Input.GetKeyDown(KeyCode.W) && isMoving)
-            transform.Translate(Vector3.forward * blockMoveSpeed * Time.deltaTime);
-        else if(Input.GetKeyDown(KeyCode.A) && isMoving)
-            transform.Translate(Vector3.left * blockMoveSpeed * Time.deltaTime);
+        {
+            if (transform.eulerAngles.y == 0.0)
+                transform.Translate(Vector3.forward * 0.08f);
+            //transform.Translate(Vector3.forward * blockMoveSpeed * Time.deltaTime);
+            else if (transform.eulerAngles.y == 90.0)
+                transform.Translate(Vector3.left * 0.08f);
+            //transform.Translate(Vector3.back * blockMoveSpeed * Time.deltaTime);
+            else if (transform.eulerAngles.y == 180.0)
+                transform.Translate(Vector3.back * 0.08f);
+            else if (transform.eulerAngles.y == 270.0)
+                transform.Translate(Vector3.right * 0.08f);
+        }
+        else if (Input.GetKeyDown(KeyCode.A) && isMoving)
+        {
+            if (transform.eulerAngles.y == 0.0)
+                transform.Translate(Vector3.left * 0.08f);
+            //transform.Translate(Vector3.forward * blockMoveSpeed * Time.deltaTime);
+            else if (transform.eulerAngles.y == 90.0)
+                transform.Translate(Vector3.back * 0.08f);
+            //transform.Translate(Vector3.back * blockMoveSpeed * Time.deltaTime);
+            else if (transform.eulerAngles.y == 180.0)
+                transform.Translate(Vector3.right * 0.08f);
+            else if (transform.eulerAngles.y == 270.0)
+                transform.Translate(Vector3.forward * 0.08f);
+            //transform.Translate(Vector3.left * blockMoveSpeed * Time.deltaTime);
+        }    
         else if (Input.GetKeyDown(KeyCode.S) && isMoving)
-            transform.Translate(Vector3.back * blockMoveSpeed * Time.deltaTime);
+        {
+            if (transform.eulerAngles.y == 0.0)
+                transform.Translate(Vector3.back * 0.08f);
+            //transform.Translate(Vector3.forward * blockMoveSpeed * Time.deltaTime);
+            else if (transform.eulerAngles.y == 90.0)
+                transform.Translate(Vector3.right * 0.08f);
+            //transform.Translate(Vector3.back * blockMoveSpeed * Time.deltaTime);
+            else if (transform.eulerAngles.y == 180.0)
+                transform.Translate(Vector3.forward * 0.08f);
+            else if (transform.eulerAngles.y == 270.0)
+                transform.Translate(Vector3.left * 0.08f);
+            //transform.Translate(Vector3.left * blockMoveSpeed * Time.deltaTime);
+            //transform.Translate(Vector3.back * blockMoveSpeed * Time.deltaTime);
+        }   
         else if (Input.GetKeyDown(KeyCode.D) && isMoving)
-            transform.Translate(Vector3.right * blockMoveSpeed * Time.deltaTime);
+        {
+            if (transform.eulerAngles.y == 0.0)
+                transform.Translate(Vector3.right * 0.08f);
+            //transform.Translate(Vector3.forward * blockMoveSpeed * Time.deltaTime);
+            else if (transform.eulerAngles.y == 90.0)
+                transform.Translate(Vector3.forward * 0.08f);
+            //transform.Translate(Vector3.back * blockMoveSpeed * Time.deltaTime);
+            else if (transform.eulerAngles.y == 180.0)
+                transform.Translate(Vector3.left * 0.08f);
+            else if (transform.eulerAngles.y == 270.0)
+                transform.Translate(Vector3.back * 0.08f);
+            //transform.Translate(Vector3.right * blockMoveSpeed * Time.deltaTime);
+        }
+            
 
     }
 
