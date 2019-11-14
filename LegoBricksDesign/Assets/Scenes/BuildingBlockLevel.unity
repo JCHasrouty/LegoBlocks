@@ -219,6 +219,9 @@ MonoBehaviour:
   - {fileID: 5446475522196278648, guid: c4b97828ea22047d59daa03a8144c87d, type: 3}
   - {fileID: 4307294757403627853, guid: bbdb12bf513e4421da9fb6f4c9556ea2, type: 3}
   legoPlateUnitPref: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!65 &658918953
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -383,6 +386,9 @@ MonoBehaviour:
   - {fileID: 7499705144004748118, guid: f268fe439434f4596b3d577c7b499ef4, type: 3}
   legoPlateUnitPref: {fileID: 3378780695545269416, guid: adf7a1993f8fb488cbd3eadef8e8b9fc,
     type: 3}
+  mask:
+    serializedVersion: 2
+    m_Bits: 4
 --- !u!4 &976827226
 Transform:
   m_ObjectHideFlags: 0

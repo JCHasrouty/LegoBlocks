@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 0
-  controlID: 102
+  controlID: 70
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 498}
   m_MaxSize: {x: 14006, y: 14048}
   vertical: 1
-  controlID: 103
+  controlID: 71
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 104
+  controlID: 72
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 274}
   m_MaxSize: {x: 14006, y: 10024}
   vertical: 0
-  controlID: 125
+  controlID: 31
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -397,7 +397,7 @@ MonoBehaviour:
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
-  m_CurrentColorSpace: 0
+  m_CurrentColorSpace: 1
   m_LastWindowPixelSize: {x: 1174, y: 876}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -434,9 +434,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.5586095, y: 0.3228713, z: -0.15668875}
+    m_Target: {x: 0.61724, y: 0.044009313, z: -0.26666045}
     speed: 2
-    m_Value: {x: -0.5586095, y: 0.3228713, z: -0.15668875}
+    m_Value: {x: 0.61724, y: 0.044009313, z: -0.26666045}
   m_RenderMode: 2
   m_CameraMode:
     drawMode: 2
@@ -464,19 +464,20 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.048507933, y: -0.5739809, z: 0.034090854, w: 0.81671953}
+    m_Target: {x: 0.06460509, y: -0.25225702, z: 0.016881999, w: 0.9653536}
     speed: 2
-    m_Value: {x: 0.048507933, y: -0.5739809, z: 0.034090854, w: 0.81671953}
+    m_Value: {x: 0.06460509, y: -0.25225702, z: 0.016881999, w: 0.9653536}
   m_Size:
-    m_Target: 2.0291438
+    m_Target: 0.9911365
     speed: 2
-    m_Value: 2.0291438
+    m_Value: 0.9911365
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: 0.11351305, y: -0.36408457, z: 0.044759788, w: 0.9233384}
+  m_LastSceneViewRotation: {x: 0.059289258, y: -0.00059389573, z: 0.000035320598,
+    w: 0.9982407}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -537,9 +538,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3a4a0000
-      m_LastClickedID: 19002
-      m_ExpandedIDs: 0c3ffeff3640feff8240feff1061feff8061feff1a81feff4881feff7a9ffeffc2befeff323cffffb45dffff2afbffffd6fbffffb43e000072480000044b0000
+      m_SelectedIDs: 143e0000
+      m_LastClickedID: 15892
+      m_ExpandedIDs: 547cffff8e9bffff94baffffccdaffffeef9ffffd6fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -601,20 +602,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/jchasrouty/Documents/CSUN/COMP-465/LegoBlocks/LegoBricksDesign
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 000e0000
-    m_LastClickedID: 3584
-    m_ExpandedIDs: 00000000fe0900005a0b0000360c0000c82b0000ca2b0000cc2b0000ce2b0000d02b0000d22b0000d42b0000d62b000000ca9a3b
+    m_SelectedIDs: 5e0a0000
+    m_LastClickedID: 2654
+    m_ExpandedIDs: 00000000fe0900005a0b0000360c0000942e0000962e0000982e00009a2e00009c2e00009e2e0000a02e0000a22e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -642,7 +643,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe0900005a0b0000360c0000c82b0000ca2b0000cc2b0000ce2b0000d02b0000d22b0000d42b0000d62b0000
+    m_ExpandedIDs: 00000000fe0900005a0b0000360c0000942e0000962e0000982e00009a2e00009c2e00009e2e0000a02e0000a22e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -669,7 +670,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300008e29000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
