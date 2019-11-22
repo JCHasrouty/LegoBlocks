@@ -38,10 +38,16 @@ public class BuildingBlocks : MonoBehaviour
     GameObject legoBlockSpawn;
     RaycastHit realTimeHitInfo = new RaycastHit();
 
-    public List<GameObject> legoUndo = new List<GameObject>();
+    public List<GameObject> BlockHistory;
+    public List<GameObject> BlockHistoryRedo;
 
-    // layer mask to ignore
-    //public LayerMask mask;
+    public bool InEditMode;
+
+    // Variables used for LayerMask
+    public LayerMask maskLayerToIgnore;
+    public bool invertMask;
+    LayerMask applyMask;
+
 
     private void OnEnable()
     {
@@ -81,12 +87,15 @@ public class BuildingBlocks : MonoBehaviour
                 z = (j * 0.08f) + (startZ + 0.04f);
                 // set location of plate legos and instantiate them
                 var gObj = GameObject.Instantiate(legoPlateUnitPref, new Vector3(x, 0, z), Quaternion.identity);
-                //gObj.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
                 gObj.GetComponentInChildren<Rigidbody>().isKinematic = true;
                 gObj.tag = "Base";
             }
         }
-        //blockMaterial = availableMaterials[SelectedBlockID];
+        BlockHistory = new List<GameObject>();
+        BlockHistory.Clear();
+
+        BlockHistoryRedo = new List<GameObject>();
+        BlockHistoryRedo.Clear();
     }
 
     //bool invertMask;
@@ -99,7 +108,6 @@ public class BuildingBlocks : MonoBehaviour
         ///// Used to determine if we are over UI element or not.
         ///// </summary>
         ///// <returns></returns>
-        ///
 
         if (IsPointerOverUIObject())
         {
@@ -117,6 +125,11 @@ public class BuildingBlocks : MonoBehaviour
                 blockRotation = realTimeLego.transform.rotation;
             }
         }
+
+        if (InEditMode)
+            return;
+
+        applyMask = ~(invertMask ? ~maskLayerToIgnore.value : maskLayerToIgnore.value);
 
         //newMask = ~(invertMask ? ~mask.value : mask.value);
 
@@ -193,37 +206,6 @@ public class BuildingBlocks : MonoBehaviour
                     //}
                 }
             }
-            //            //foreach (var rb in block.GetComponentsInChildren<Rigidbody>())
-            //            //    rb.isKinematic = true;
-
-            //            //foreach (var r in block.GetComponentsInChildren<Renderer>())
-            //            //{
-            //            //    // assign default white/transparent material
-
-            //            //}
-            //            //var block = GameObject.CreatePrimitive(PrimitiveType.block);
-            //            // 0.5f is the size difference of the block so half of it won't be placed inside the floor
-            //            //block.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + 0.04f, hitInfo.point.z);
-            //            //if (hitInfo.transform.tag.Equals("Base"))
-            //            //{
-            //            //    // get the transform of the object you are hitting not the point of the raycast. (transform.position.x)
-            //            //    block.transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.point.y + y_offset, hitInfo.transform.position.z);
-            //            //}
-            //            //else
-            //            //{
-            //            //    if (hitInfo.normal == new Vector3(0, 1, 0))
-            //            //        block.transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.point.y + y_offset, hitInfo.transform.position.z);
-            //            //    //else if (hitInfo.normal == new Vector3(1, 0, 0))
-            //            //    //    block.transform.position = new Vector3(hitInfo.point.x + 0.5f, hitInfo.transform.position.y, hitInfo.transform.position.z);
-            //            //    //else if (hitInfo.normal == new Vector3(0, 0, 1))
-            //            //    //    block.transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y, hitInfo.point.z + 0.5f);
-            //            //    //else if (hitInfo.normal == new Vector3(0, -1, 0))
-            //            //    //    block.transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.point.y - 0.5f, hitInfo.transform.position.z);
-            //            //    //else if (hitInfo.normal == new Vector3(-1, 0, 0))
-            //            //    //    block.transform.position = new Vector3(hitInfo.point.x - 0.5f, hitInfo.transform.position.y, hitInfo.transform.position.z);
-            //            //    //else if (hitInfo.normal == new Vector3(0, 0, -1))
-            //            //    //    block.transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y, hitInfo.point.z - 0.5f);
-            //            //}
 
 
         }
@@ -234,7 +216,7 @@ public class BuildingBlocks : MonoBehaviour
             if (hit)
             {
                 legoBlockSpawn = GameObject.Instantiate(legoBlockPrefabs[SelectedBlockID]);
-                legoUndo.Add(legoBlockSpawn);
+                BlockHistory.Add(legoBlockSpawn);
                 legoBlockSpawn.GetComponent<Rigidbody>().isKinematic = true;
                 legoBlockSpawn.GetComponent<Renderer>().material.color = blockColor;
                 legoBlockSpawn.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + y_offset, hitInfo.point.z);
@@ -243,7 +225,8 @@ public class BuildingBlocks : MonoBehaviour
                 {
                     if (legoBlockSpawn.GetComponent<BlockData>().Type == BlockType.doubleUnit)
                     {
-                        legoBlockSpawn.transform.position = new Vector3(hitInfo.transform.position.x + x_offset, hitInfo.point.y + 0.04f, hitInfo.transform.position.z);
+                        // Do rotation checking in here to offset lego block for double units
+                        legoBlockSpawn.transform.position = new Vector3(hitInfo.transform.position.x + x_offset, hitInfo.point.y + y_offset, hitInfo.transform.position.z);
                     }
                     else
                     {
@@ -278,59 +261,76 @@ public class BuildingBlocks : MonoBehaviour
                         legoBlockSpawn.transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.point.y - y_offset, hitInfo.transform.position.z);
                     }
                 }
-                //var block = GameObject.Instantiate(legoBlockPrefabs[SelectedBlockID]);
-                //legoUndo.Add(block);
-                //block.GetComponent<Rigidbody>().isKinematic = true;
-                //block.GetComponent<Renderer>().material.color = blockColor;
-
-                //block.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + y_offset, hitInfo.point.z);
-                //block.transform.rotation = blockRotation;
-                //if (hitInfo.transform.tag.Equals("Base"))
-                //{
-                //    if (block.GetComponent<BlockData>().Type == BlockType.doubleUnit)
-                //    {
-                //        block.transform.position = new Vector3(hitInfo.transform.position.x + x_offset, hitInfo.point.y + 0.04f, hitInfo.transform.position.z);
-                //    }
-                //    else
-                //    {
-                //        block.transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.point.y + y_offset, hitInfo.transform.position.z);
-                //    }
-                    
-                //}
-                //else
-                //{
-                //    if (hitInfo.normal == new Vector3(0, 0, 1))
-                //    {
-                //        block.transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y, hitInfo.point.z + y_offset);
-                //    }
-                //    if (hitInfo.normal == new Vector3(1, 0, 0))
-                //    {
-                //        block.transform.position = new Vector3(hitInfo.point.x + y_offset, hitInfo.transform.position.y, hitInfo.transform.position.z);
-                //    }
-                //    if (hitInfo.normal == new Vector3(0, 1, 0))
-                //    {
-                //        block.transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.point.y + y_offset, hitInfo.transform.position.z);
-                //    }
-                //    if (hitInfo.normal == new Vector3(0, 0, -1))
-                //    {
-                //        block.transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y, hitInfo.point.z - y_offset);
-                //    }
-                //    if (hitInfo.normal == new Vector3(-1, 0, 0))
-                //    {
-                //        block.transform.position = new Vector3(hitInfo.point.x - y_offset, hitInfo.transform.position.y, hitInfo.transform.position.z);
-                //    }
-                //    if (hitInfo.normal == new Vector3(0, -1, 0))
-                //    {
-                //        block.transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.point.y - y_offset, hitInfo.transform.position.z);
-                //    }
-                //}
             }
         }
-        if(Input.GetKeyDown(KeyCode.T))
+
+        //if (Input.GetMouseButtonUp(1))
+        //{
+        //    //Destroy(realtimeCube);
+
+        //    #region Screen To World
+        //    RaycastHit hitInfo = new RaycastHit();
+        //    bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, applyMask);
+        //    if (hit)
+        //    {
+        //        #region HIDE
+        //        if (hitInfo.transform.tag.Equals("Base"))
+        //        {
+        //            //cube.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + (0.5f), hitInfo.point.z);
+        //            return;
+        //        }
+        //        #region HIDE
+        //        else
+        //        {
+        //            InEditMode = !InEditMode;
+        //            // let's change the mode for editing ...
+        //            //GameObject tmp = Instantiate(hitInfo.transform.gameObject);
+        //            //hitInfo.transform.gameObject.SetActive(false);
+
+        //            BuildingBlocksEdit bbe = hitInfo.transform.gameObject.GetComponent<BuildingBlocksEdit>();
+        //            bbe.MoveControlsSetActive(InEditMode);
+        //            bbe.OnBlockEditDone += Bbe_OnBlockEditDone;
+
+        //            Destroy(realtimeCube);
+        //        }
+        //        #endregion
+
+        //        #endregion
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("No hit");
+        //    }
+        //    #endregion
+        //}
+
+        // Setting it to T because the zoom is on Z
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            legoUndo.Remove(legoBlockSpawn);
-            // works with or without gameObject
-            Destroy(legoBlockSpawn.gameObject);
+            if(BlockHistory.Count > 0)
+            {
+                GameObject tmp = Instantiate(BlockHistory.Last());
+                tmp.SetActive(false);
+                BlockHistoryRedo.Insert(0, tmp);
+
+                // undo previous move
+                Destroy(BlockHistory.Last());
+                BlockHistory.RemoveAt(BlockHistory.Count - 1);
+                //BlockHistory.Remove(legoBlockSpawn);
+            }
+        }
+        if(Input.GetKeyUp(KeyCode.Y))
+        {
+            if(BlockHistoryRedo.Count > 0)
+            {
+                GameObject tmp = Instantiate(BlockHistoryRedo.First());
+                tmp.SetActive(true);
+                BlockHistory.Add(tmp);
+
+                // undo previous move
+                Destroy(BlockHistoryRedo.First());
+                BlockHistoryRedo.RemoveAt(0);
+            }
         }
     }
     private bool IsPointerOverUIObject()
